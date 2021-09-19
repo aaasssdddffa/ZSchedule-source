@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.LocalTime;
+import java.util.Arrays;
 import java.util.Map;
 
 import static openSite.MainGUI.*;
@@ -15,8 +16,8 @@ public class manyIF extends JOptionPane { //todo 자동연결 고치기
     static int breakTimeReduced = 15 - Integer.parseInt(MainGUI.times[0]);
     static int studyTimeReduced = 40 - Integer.parseInt(MainGUI.times[1]);
     static int allReduced = breakTimeReduced + studyTimeReduced;
-    static int[] allTimes = new int[]{845 - breakTimeReduced, 930, 1025, 1120, 1215, 1305, 1340, 1435, 1440, 1530, 1535};
-    static int[] shorterAllTimes = new int[12];
+    static int[] allTimes = new int[]{845 - breakTimeReduced, 930, 1025, 1120, 1215, 1305, 1340, 1440, 1530, 1535};
+    static int[] shorterAllTimes = new int[allTimes.length+1];
     static boolean[] isClass7 = new boolean[5];
     static String[] saveTimetable = new String[MainGUI.timetable.length];
     static String[] URLs = new String[MainGUI.timetable.length];
@@ -40,10 +41,10 @@ public class manyIF extends JOptionPane { //todo 자동연결 고치기
             }
         }
         shorterAllTimes[0] = 830;
+        shorterAllTimes[1] = 850;
         System.out.println(breakTimeReduced);
-        for (int i = 1; i < shorterAllTimes.length; i++) {
-            shorterAllTimes[i] = allTimes[i-1] + Integer.parseInt(MainGUI.times[0]);
-            System.out.println(shorterAllTimes[i]);
+        for (int i = 2; i < shorterAllTimes.length; i++) {
+            shorterAllTimes[i] = allTimes[i - 1] + Integer.parseInt(MainGUI.times[0]);
             String strArray = String.valueOf(shorterAllTimes[i]-allReduced-shortenedTime);
             if((strArray.length() == 3 && !strArray.substring(0,1).equals(String.valueOf(shorterAllTimes[i]).substring(0,1))) ||
                     (strArray.length() == 4 && !strArray.substring(0,2).equals(String.valueOf(shorterAllTimes[i]).substring(0,2)))) {
@@ -53,6 +54,7 @@ public class manyIF extends JOptionPane { //todo 자동연결 고치기
                 shorterAllTimes[i] -= allReduced + shortenedTime;
             }
         }
+        System.out.println(Arrays.toString(shorterAllTimes));
     }
     static void manyIFNowClass() {
         switch (Main.date) {
@@ -71,11 +73,11 @@ public class manyIF extends JOptionPane { //todo 자동연결 고치기
                     desktopView(URLs[4]);
                 } else if(now < allTimes[7]) {
                     desktopView(URLs[5]);
-                } else if(now < allTimes[9] && isClass7[0]) {
+                } else if(now < allTimes[8] && isClass7[0]) {
                     desktopView(URLs[6]);
                 } else if(now > allTimes[8] && !isClass7[0]) {
                     desktopView(MainGUI.URLs[0]);
-                } else if(now > allTimes[10] && isClass7[0]) {
+                } else if(now > allTimes[9] && isClass7[0]) {
                     desktopView(MainGUI.URLs[0]);
                 }
             }
@@ -94,11 +96,11 @@ public class manyIF extends JOptionPane { //todo 자동연결 고치기
                     desktopView(URLs[11]);
                 } else if(now < allTimes[7]) {
                     desktopView(URLs[12]);
-                } else if(now < allTimes[9] && isClass7[1]) {
+                } else if(now < allTimes[8] && isClass7[1]) {
                     desktopView(URLs[13]);
                 } else if(now > allTimes[8] && !isClass7[1]) {
                     desktopView(MainGUI.URLs[0]);
-                } else if(now > allTimes[10] && isClass7[1]) {
+                } else if(now > allTimes[9] && isClass7[1]) {
                     desktopView(MainGUI.URLs[0]);
                 }
             }
@@ -117,11 +119,11 @@ public class manyIF extends JOptionPane { //todo 자동연결 고치기
                     desktopView(URLs[18]);
                 } else if(now < allTimes[7]) {
                     desktopView(URLs[19]);
-                } else if(now < allTimes[9] && isClass7[2]) {
+                } else if(now < allTimes[8] && isClass7[2]) {
                     desktopView(URLs[20]);
                 } else if(now > allTimes[8] && !isClass7[2]) {
                     desktopView(MainGUI.URLs[0]);
-                } else if(now > allTimes[10] && isClass7[2]) {
+                } else if(now > allTimes[9] && isClass7[2]) {
                     desktopView(MainGUI.URLs[0]);
                 }
             }
@@ -140,11 +142,11 @@ public class manyIF extends JOptionPane { //todo 자동연결 고치기
                     desktopView(URLs[25]);
                 } else if(now < allTimes[7]) {
                     desktopView(URLs[26]);
-                } else if(now < allTimes[9] && isClass7[3]) {
+                } else if(now < allTimes[8] && isClass7[3]) {
                     desktopView(URLs[27]);
                 } else if(now > allTimes[8] && !isClass7[3]) {
                     desktopView(MainGUI.URLs[0]);
-                } else if(now > allTimes[10] && isClass7[3]) {
+                } else if(now > allTimes[9] && isClass7[3]) {
                     desktopView(MainGUI.URLs[0]);
                 }
             }
@@ -163,11 +165,11 @@ public class manyIF extends JOptionPane { //todo 자동연결 고치기
                     desktopView(URLs[32]);
                 } else if(now < allTimes[7]) {
                     desktopView(URLs[33]);
-                } else if(now < allTimes[9] && isClass7[4]) {
+                } else if(now < allTimes[8] && isClass7[4]) {
                     desktopView(URLs[35]);
                 } else if(now > allTimes[8] && !isClass7[4]) {
                     desktopView(MainGUI.URLs[0]);
-                } else if(now > allTimes[10] && isClass7[4]) {
+                } else if(now > allTimes[9] && isClass7[4]) {
                     desktopView(MainGUI.URLs[0]);
                 }
             }
@@ -279,7 +281,7 @@ public class manyIF extends JOptionPane { //todo 자동연결 고치기
         return false;
     }
     public static void nowClass(JLabel jL) {
-        if(!(Main.date == 0 || Main.date == 6) && now < allTimes[0] || now > allTimes[10]) {
+        if(!(Main.date == 0 || Main.date == 6) && now < allTimes[0] || now > allTimes[9]) {
             jL.setText("조회 종례");
         } else if(now < allTimes[1]) {
             jL.setText("1교시");
@@ -295,9 +297,9 @@ public class manyIF extends JOptionPane { //todo 자동연결 고치기
             jL.setText("5교시");
         } else if(now < allTimes[7]) {
             jL.setText("6교시");
-        } else if((Main.date == 2 || Main.date == 3) && now < allTimes[9]) {
+        } else if((Main.date == 2 || Main.date == 3) && now < allTimes[8]) {
             jL.setText("7교시");
-        } else if(!(Main.date == 2 || Main.date == 3) && now < allTimes[9]) {
+        } else if(!(Main.date == 2 || Main.date == 3) && now < allTimes[8]) {
             jL.setText("조회 종례");
         }
     }
@@ -328,13 +330,13 @@ public class manyIF extends JOptionPane { //todo 자동연결 고치기
                 } else if(innerNow == shorterAllTimes[7]) {
                     desktopView(URLs[5]);
                     return true;
-                } else if(now == shorterAllTimes[9] && isClass7[0]) {
+                } else if(now == shorterAllTimes[8] && isClass7[0]) {
                     desktopView(URLs[6]);
                     return true;
-                } else if(now == shorterAllTimes[8] && !isClass7[0]) {
+                } else if(now == shorterAllTimes[8]) {
                     desktopView(MainGUI.URLs[0]);
                     return true;
-                } else if(now == shorterAllTimes[10] && isClass7[0]) {
+                } else if(now == shorterAllTimes[9] && isClass7[0]) {
                     desktopView(MainGUI.URLs[0]);
                     return true;
                 }
@@ -361,13 +363,13 @@ public class manyIF extends JOptionPane { //todo 자동연결 고치기
                 } else if(innerNow == shorterAllTimes[7]) {
                     desktopView(URLs[12]);
                     return true;
-                } else if(now == shorterAllTimes[9] && isClass7[1]) {
+                } else if(now == shorterAllTimes[8] && isClass7[1]) {
                     desktopView(URLs[13]);
                     return true;
-                } else if(now == shorterAllTimes[8] && !isClass7[1]) {
+                } else if(now == shorterAllTimes[8]) {
                     desktopView(MainGUI.URLs[0]);
                     return true;
-                } else if(now == shorterAllTimes[10] && isClass7[1]) {
+                } else if(now == shorterAllTimes[9] && isClass7[1]) {
                     desktopView(MainGUI.URLs[0]);
                     return true;
                 }
@@ -394,13 +396,13 @@ public class manyIF extends JOptionPane { //todo 자동연결 고치기
                 } else if(innerNow == shorterAllTimes[7]) {
                     desktopView(URLs[19]);
                     return true;
-                } else if(now == shorterAllTimes[9] && isClass7[2]) {
+                } else if(now == shorterAllTimes[8] && isClass7[2]) {
                     desktopView(URLs[20]);
                     return true;
-                } else if(now == shorterAllTimes[8] && !isClass7[2]) {
+                } else if(now == shorterAllTimes[8]) {
                     desktopView(MainGUI.URLs[0]);
                     return true;
-                } else if(now == shorterAllTimes[10] && isClass7[2]) {
+                } else if(now == shorterAllTimes[9] && isClass7[2]) {
                     desktopView(MainGUI.URLs[0]);
                     return true;
                 }
@@ -427,13 +429,13 @@ public class manyIF extends JOptionPane { //todo 자동연결 고치기
                 } else if(innerNow == shorterAllTimes[7]) {
                     desktopView(URLs[26]);
                     return true;
-                } else if(now == shorterAllTimes[9] && isClass7[3]) {
+                } else if(now == shorterAllTimes[8] && isClass7[3]) {
                     desktopView(URLs[27]);
                     return true;
-                } else if(now == shorterAllTimes[8] && !isClass7[3]) {
+                } else if(now == shorterAllTimes[8]) {
                     desktopView(MainGUI.URLs[0]);
                     return true;
-                } else if(now == shorterAllTimes[10] && isClass7[3]) {
+                } else if(now == shorterAllTimes[9] && isClass7[3]) {
                     desktopView(MainGUI.URLs[0]);
                     return true;
                 }
@@ -460,13 +462,13 @@ public class manyIF extends JOptionPane { //todo 자동연결 고치기
                 } else if(innerNow == shorterAllTimes[7]) {
                     desktopView(URLs[33]);
                     return true;
-                } else if(now == shorterAllTimes[9] && isClass7[4]) {
+                } else if(now == shorterAllTimes[8] && isClass7[4]) {
                     desktopView(URLs[34]);
                     return true;
-                } else if(now == shorterAllTimes[8] && !isClass7[4]) {
+                } else if(now == shorterAllTimes[8]) {
                     desktopView(MainGUI.URLs[0]);
                     return true;
-                } else if(now == shorterAllTimes[10] && isClass7[4]) {
+                } else if(now == shorterAllTimes[9] && isClass7[4]) {
                     desktopView(MainGUI.URLs[0]);
                     return true;
                 }
