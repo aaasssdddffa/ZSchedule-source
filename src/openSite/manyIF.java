@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.LocalTime;
-import java.util.Arrays;
 import java.util.Map;
 
 import static openSite.MainGUI.*;
@@ -42,7 +41,6 @@ public class manyIF extends JOptionPane { //todo 자동연결 고치기
         }
         shorterAllTimes[0] = 830;
         shorterAllTimes[1] = 850;
-        System.out.println(breakTimeReduced);
         for (int i = 2; i < shorterAllTimes.length; i++) {
             shorterAllTimes[i] = allTimes[i - 1] + Integer.parseInt(MainGUI.times[0]);
             String strArray = String.valueOf(shorterAllTimes[i]-allReduced-shortenedTime);
@@ -54,7 +52,6 @@ public class manyIF extends JOptionPane { //todo 자동연결 고치기
                 shorterAllTimes[i] -= allReduced + shortenedTime;
             }
         }
-        System.out.println(Arrays.toString(shorterAllTimes));
     }
     static void manyIFNowClass() {
         switch (Main.date) {

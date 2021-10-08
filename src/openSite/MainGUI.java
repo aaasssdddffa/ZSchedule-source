@@ -312,14 +312,16 @@ public class MainGUI extends JFrame {
                         e1.printStackTrace();
                     }
                 }
-            } else if(e.getSource() == shortDayBreakTime) {
-                times[0] = String.valueOf(mkJOptionPane("쉬는시간이 몇 분인지 입력해 주세요"));
-                shortSchoolXmlWrite();
-                restart();
-            } else if(e.getSource() == shortDayStudyTime) {
-                times[1] = String.valueOf(mkJOptionPane("수업시간이 몇 분인지 입력해 주세요"));
-                shortSchoolXmlWrite();
-                restart();
+//            } else if(e.getSource() == shortDayBreakTime) {
+//                times[0] = String.valueOf(mkJOptionPane("쉬는시간이 몇 분인지 입력해 주세요"));
+//                shortSchoolXmlWrite();
+//                restart();
+//            } else if(e.getSource() == shortDayStudyTime) {
+//                times[1] = String.valueOf(mkJOptionPane("수업시간이 몇 분인지 입력해 주세요"));
+//                shortSchoolXmlWrite();
+//                restart();
+            }else if(e.getSource() == shortDay) {
+                new shortSchoolGUI();
             } else if(e.getSource() == alarmTime) {
                 if(!(ConnectTimeGUI.frame.isActive())) {
                     ConnectTimeGUI.mkSetting(connectTime, connectTimeFile);
