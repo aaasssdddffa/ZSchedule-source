@@ -29,12 +29,10 @@ public class MainGUI extends JFrame {
     static JMenu editMenu = new JMenu("Edit");
     static JMenu settingMenu = new JMenu("Setting");
     static JMenuItem edit = new JMenuItem("링크");
-    static JMenu shortDay = new JMenu("단축수업");
+    static JMenuItem shortDay = new JMenuItem("단축수업");
     static JMenu filesChoose = new JMenu("파일");
     static JMenuItem alarmTime = new JMenuItem("알림");
     static JMenuItem timetableMenu = new JMenuItem("시간표");
-    static JMenuItem shortDayBreakTime = new JMenuItem("쉬는시간");
-    static JMenuItem shortDayStudyTime = new JMenuItem("수업시간");
     static JMenuItem linkEditFile = new JMenuItem("링크 파일");
     static JMenuItem timetableEditFile = new JMenuItem("시간표 파일");
     static String[] URLs = new String[16];
@@ -129,20 +127,6 @@ public class MainGUI extends JFrame {
     public static void mkJOptionPane(String showMsg, String title, int option) {
         JOptionPane.showMessageDialog(null, showMsg, title, option);
     }
-    public static int mkJOptionPane(String showMsg) {
-        String result = JOptionPane.showInputDialog(showMsg);
-        if(result == null) {
-            mkJOptionPane(showMsg);
-        } else {
-            if (result.matches("-?\\d+")) {
-                return Integer.parseInt(result);
-            } else {
-                mkJOptionPane("숫자를 입력해 주세요", "Notification", JOptionPane.ERROR_MESSAGE);
-                mkJOptionPane(showMsg);
-            }
-        }
-        return 0;
-    }
     public static void ButtonDefaultSet(int x, int y, int width, int height, JButton btn, String toolTipText) {
         btn.setBounds(x, y ,width, height);
         btn.setBorderPainted(false);
@@ -170,8 +154,6 @@ public class MainGUI extends JFrame {
     public static void setFrameOptions(JFrame f) {
         shortDay.setMargin(margin);
         edit.setMargin(margin);
-        shortDayBreakTime.setMargin(margin);
-        shortDayStudyTime.setMargin(margin);
         alarmTime.setMargin(margin);
         timetableMenu.setMargin(margin);
         filesChoose.setMargin(margin);
@@ -179,8 +161,6 @@ public class MainGUI extends JFrame {
         timetableEditFile.setMargin(margin);
         filesChoose.add(linkEditFile);
         filesChoose.add(timetableEditFile);
-        shortDay.add(shortDayBreakTime);
-        shortDay.add(shortDayStudyTime);
         editMenu.add(edit);
         editMenu.add(shortDay);
         editMenu.add(alarmTime);
@@ -189,9 +169,8 @@ public class MainGUI extends JFrame {
         mb.add(editMenu);
         mb.add(settingMenu);
         edit.addMouseListener(new MouseEvents());
-        shortDayBreakTime.addMouseListener(new MouseEvents());
-        shortDayStudyTime.addMouseListener(new MouseEvents());
         alarmTime.addMouseListener(new MouseEvents());
+        shortDay.addMouseListener(new MouseEvents());
         timetableMenu.addMouseListener(new MouseEvents());
         linkEditFile.addMouseListener(new MouseEvents());
         timetableEditFile.addMouseListener(new MouseEvents());
@@ -312,14 +291,6 @@ public class MainGUI extends JFrame {
                         e1.printStackTrace();
                     }
                 }
-//            } else if(e.getSource() == shortDayBreakTime) {
-//                times[0] = String.valueOf(mkJOptionPane("쉬는시간이 몇 분인지 입력해 주세요"));
-//                shortSchoolXmlWrite();
-//                restart();
-//            } else if(e.getSource() == shortDayStudyTime) {
-//                times[1] = String.valueOf(mkJOptionPane("수업시간이 몇 분인지 입력해 주세요"));
-//                shortSchoolXmlWrite();
-//                restart();
             }else if(e.getSource() == shortDay) {
                 new shortSchoolGUI();
             } else if(e.getSource() == alarmTime) {
